@@ -28,7 +28,7 @@ public class Deck {
 			newI = randIndex.nextInt(cards.length);
 			temp = cards[i];
 			cards[newI] = cards[i];
-			System.out.println(cards[i]);
+			//System.out.println(cards[i]);
 		}
 	}
 

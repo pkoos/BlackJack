@@ -41,12 +41,12 @@ public class Blackjack {
 		
 	}
 
-	private Player calculateWinner(Player p1, Player p2) {
+	/* private Player calculateWinner(Player p1, Player p2) {
 		if (p1.getPlayerScore() > p2.getPlayerScore()) {
 			return p1;
 		} else {
 			return p2;
 		}
-	}
+	} */
 
 }
