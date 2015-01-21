@@ -3,7 +3,7 @@ package net.example.blackjack;
 public class Player {
 	final String name;
 	private int playerScore;
-	protected Card[] handOfCards = new Card[5];
+	protected Card[] hand = new Card[5];
 
 	public Player(String name) {
 		this.name = name;
@@ -15,9 +15,10 @@ public class Player {
 	 * }
 	 */
 
-	public void checkHand(Card[] cards) {
-		for (int i = 0; i < cards.length; i++) {
-			System.out.println(cards[i]);
+	public void checkHand(Card[] hand) {
+		for (int i = 0; i < hand.length; i++) {
+			Card temp = hand[i];
+			System.out.println(temp);
 			System.out.println(playerScore);
 		}
 		System.out.println("Total score: " + playerScore);
@@ -32,7 +33,7 @@ public class Player {
 	}
 	
 	public void putCards(Card c) {
-		this.handOfCards[handOfCards.length-1] = c;
+		this.hand[hand.length-1] = c;
 	}
 	
 	// This method may never be used. If that's the case, then it can be removed.

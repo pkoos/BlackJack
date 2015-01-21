@@ -15,9 +15,9 @@ public class Blackjack {
 	}
 
 	public void play() {
-
+		cards.shuffle();
 		cards.deal(human, dealer);
-		human.checkHand(human.handOfCards);
+		human.checkHand(human.hand);
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
 		hitOrStand(human, playerInput);
