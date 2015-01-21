@@ -10,8 +10,8 @@ public class Card {
 	}
 	
 	public void setCardValue() {
-		switch(rank) {
-		case Ace:
+		switch(rank) { 
+		case Ace: 
 			cardVal = 1;
 			break;
 		case Two:
