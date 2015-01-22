@@ -6,7 +6,7 @@ ehthumbs.db
 Desktop.ini
 .git/*
 .settings/*
-.bin/*
+bin/
 *.classpath
 *.project
 # Recycle Bin used on file shares
