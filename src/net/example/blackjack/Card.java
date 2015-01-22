@@ -6,13 +6,13 @@ public class Card {
 
 	public Card(Rank r) {
 		rank = r;
-		cardVal = Math.min(10, rank.ordinal()+1);
+		cardVal = Math.min(10, rank.ordinal() + 1);
 	}
 
 	public int getCardValue() {
 		return cardVal;
 	}
-	
+
 	public String toString() {
 		return "" + this.rank + " worth " + this.cardVal + ".";
 	}

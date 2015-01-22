@@ -1,12 +1,12 @@
 package net.example.blackjack;
+
 import java.util.Random;
 
 public class Deck {
 	final Card cards[];
 	private static int cardCount = 0;
 	int counter = 0;
-	
-	// I need to find a way to get all the cards in the deck using ArrayList.
+
 	public Deck() {
 		cards = new Card[52];
 		for (int i = 0; i < 4; i++) {
@@ -17,18 +17,15 @@ public class Deck {
 		}
 	}
 
-	// credit goes to
-	// http://pages.cs.wisc.edu/~hasti/cs302/examples/Exception/Deck.java
 	public void shuffle() {
 		int newI;
 		Card temp;
 		Random randIndex = new Random();
 
-		for (int i = 0; i < 52; i++) {
+		for (int i = 0; i < 1000; i++) {
 			newI = randIndex.nextInt(cards.length);
-			temp = cards[i];
-			cards[newI] = cards[i];
-			//System.out.println(cards[i]);
+			temp = cards[(i % cards.length)];
+			cards[newI] = cards[(i % cards.length)];
 		}
 	}
 
@@ -41,14 +38,5 @@ public class Deck {
 		}
 		return temp;
 	}
-	
-	public void deal(Player p1, Player p2) {
-		for(int i = 0;i<2;i++) {
-			p1.putCards(getTopCard());
-			p2.putCards(getTopCard());
-		}
-	}
-	
-	
-	
+
 }

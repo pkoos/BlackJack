@@ -17,13 +17,21 @@ public class Blackjack {
 
 	public void play() {
 		cards.shuffle();
-		cards.deal(human, dealer);
+		deal(2, human, dealer);
 		human.checkHand(human.hand);
 		playerLoop();
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
 
+	public void deal(int numCards, Player p1, Player p2) {
+		for(int i = 0;i<numCards;i++) {
+			p1.putCards(cards.getTopCard());
+			p2.putCards(cards.getTopCard());
+		}
+	}
+	
+	
 	public void hitOrStand(Player player) {
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
@@ -41,7 +49,6 @@ public class Blackjack {
 		default:
 			System.out.println("I didn't understand, please type HIT or STAND");
 		}
-
 	}
 
 	private void playerLoop() {
