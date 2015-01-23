@@ -18,14 +18,20 @@ public class Deck {
 	}
 
 	public void shuffle() {
-		int newI;
-		Card temp;
+		Card tempA;
+		Card tempB;
+		int newA;
+		int newB;
 		Random randIndex = new Random();
-
-		for (int i = 0; i < 1000; i++) {
-			newI = randIndex.nextInt(cards.length);
-			temp = cards[(i % cards.length)];
-			cards[newI] = cards[(i % cards.length)];
+		
+		for(int i = 0;i<1000;i++) {
+			newA = randIndex.nextInt(cards.length);
+			newB = randIndex.nextInt(cards.length);
+			
+			tempA = cards[newA];
+			tempB = cards[newB];
+			cards[newA] = tempB;
+			cards[newB] = tempA;
 		}
 	}
 
@@ -37,6 +43,14 @@ public class Deck {
 			System.out.println("Out of cards, shuffling the deck");
 		}
 		return temp;
+	}
+	
+	public void deal(int numCards, Player... playerList ) {
+		for(int i = 0;i<numCards;i++) {
+			for(Player people : playerList) {
+				people.putCards(this.getTopCard());
+			}
+		}
 	}
 
 }

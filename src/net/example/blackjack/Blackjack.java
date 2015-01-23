@@ -17,21 +17,13 @@ public class Blackjack {
 
 	public void play() {
 		cards.shuffle();
-		deal(2, human, dealer);
+		cards.deal(2, human, dealer);
 		human.checkHand(human.hand);
 		playerLoop();
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
 
-	public void deal(int numCards, Player p1, Player p2) {
-		for(int i = 0;i<numCards;i++) {
-			p1.putCards(cards.getTopCard());
-			p2.putCards(cards.getTopCard());
-		}
-	}
-	
-	
 	public void hitOrStand(Player player) {
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
