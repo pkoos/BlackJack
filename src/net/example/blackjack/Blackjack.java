@@ -1,10 +1,6 @@
 package net.example.blackjack;
 
-import java.util.Scanner;
-
 public class Blackjack {
-	private Scanner input = new Scanner(System.in);
-	private String playerInput = "";
 	final Deck cards;
 	final Player human, dealer;
 	private boolean keepGoing = true;
@@ -23,29 +19,9 @@ public class Blackjack {
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
-
-	public void hitOrStand(Player player) {
-		System.out.println("Would you like to HIT or STAND? >>>");
-		playerInput = input.nextLine().toUpperCase();
-		switch (playerInput) {
-
-		case "HIT":
-			System.out.println("Dealing a card.");
-			player.hit(cards.getTopCard());
-			break;
-		case "STAND":
-			System.out.println("Standing");
-			player.stand(this);
-			System.out.println(player);
-			break;
-		default:
-			System.out.println("I didn't understand, please type HIT or STAND");
-		}
-	}
-
 	private void playerLoop() {
 		while ((human.getPlayerScore() <= 21) && keepGoing) {
-			hitOrStand(human);
+			human.hitOrStand(cards, this);
 		}
 	}
 
