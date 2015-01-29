@@ -19,10 +19,15 @@ public class Blackjack {
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
+
 	private void playerLoop() {
-		while ((human.getPlayerScore() <= 21) && keepGoing) {
+		while ((over21(human) && keepGoing) {
 			human.hitOrStand(cards, this);
 		}
+	}
+
+	private boolean over21(Player player) {
+		return player.getPlayerScore() > 21;
 	}
 
 	private void dealerLoop() {
@@ -30,7 +35,7 @@ public class Blackjack {
 		while (keepGoing) {
 			if (dealer.getPlayerScore() > 16) {
 				dealer.stand(this);
-
+				keepGoing = false;
 			} else {
 				dealer.hit(cards.getTopCard());
 			}
