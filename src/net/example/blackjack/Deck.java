@@ -18,20 +18,18 @@ public class Deck {
 	}
 
 	public void shuffle() {
-		Card tempA;
-		Card tempB;
+		Card tempCard;
 		int newA;
 		int newB;
 		Random randIndex = new Random();
-		
-		for(int i = 0;i<1000;i++) {
+
+		for (int i = 0; i < 1000; i++) {
 			newA = randIndex.nextInt(cards.length);
 			newB = randIndex.nextInt(cards.length);
-			
-			tempA = cards[newA];
-			tempB = cards[newB];
-			cards[newA] = tempB;
-			cards[newB] = tempA;
+
+			tempCard = cards[newA];
+			cards[newA] = cards[newB];
+			cards[newB] = tempCard;
 		}
 	}
 
@@ -44,10 +42,10 @@ public class Deck {
 		}
 		return temp;
 	}
-	
-	public void deal(int numCards, Player... playerList ) {
-		for(int i = 0;i<numCards;i++) {
-			for(Player people : playerList) {
+
+	public void deal(int numCards, Player... playerList) {
+		for (int i = 0; i < numCards; i++) {
+			for (Player people : playerList) {
 				people.putCards(this.getTopCard());
 			}
 		}

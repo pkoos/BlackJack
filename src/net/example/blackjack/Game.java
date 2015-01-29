@@ -6,8 +6,8 @@ public class Game {
 
 		Blackjack game = new Blackjack();
 		game.play();
-		//Deck d = new Deck();
-		//d.shuffle(); 
+		// Deck d = new Deck();
+		// d.shuffle();
 	}
-	
+
 }

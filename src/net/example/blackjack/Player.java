@@ -25,11 +25,11 @@ public class Player {
 		}
 		System.out.println(this);
 	}
-	
+
 	public void hitOrStand(Deck deck, Blackjack blackjack) {
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
-		
+
 		switch (playerInput) {
 
 		case "HIT":
@@ -45,7 +45,6 @@ public class Player {
 			System.out.println("I didn't understand, please type HIT or STAND");
 		}
 	}
-	
 
 	public void stand(Blackjack blackJack) {
 		blackJack.setKeepGoing(false);
