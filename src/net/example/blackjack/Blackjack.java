@@ -21,7 +21,7 @@ public class Blackjack {
 	}
 
 	private void playerLoop() {
-		while ((over21(human) && keepGoing) {
+		while ((!over21(human) && this.getKeepGoing()) {
 			human.hitOrStand(cards, this);
 		}
 	}
@@ -35,7 +35,6 @@ public class Blackjack {
 		while (keepGoing) {
 			if (dealer.getPlayerScore() > 16) {
 				dealer.stand(this);
-				keepGoing = false;
 			} else {
 				dealer.hit(cards.getTopCard());
 			}
@@ -53,6 +52,10 @@ public class Blackjack {
 
 	public void setKeepGoing(boolean keepGoing) {
 		this.keepGoing = keepGoing;
+	}
+	
+	public  boolean getKeepGoing() {
+		return this.keepGoing;
 	}
 
 }
