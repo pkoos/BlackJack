@@ -4,10 +4,12 @@ import java.util.Random;
 
 public class Deck {
 	final Card cards[];
-	private static int cardCount = 0;
-	int counter = 0;
+	private int cardCount = 0;
+	private Random random;
 
-	public Deck() {
+	public Deck(Random randNum) {
+		this.random = randNum;
+		int counter = 0;
 		cards = new Card[52];
 		for (int i = 0; i < 4; i++) {
 			for (Rank r : Rank.values()) {
@@ -21,11 +23,10 @@ public class Deck {
 		Card tempCard;
 		int newA;
 		int newB;
-		Random randIndex = new Random();
 
 		for (int i = 0; i < 1000; i++) {
-			newA = randIndex.nextInt(cards.length);
-			newB = randIndex.nextInt(cards.length);
+			newA = random.nextInt(cards.length);
+			newB = random.nextInt(cards.length);
 
 			tempCard = cards[newA];
 			cards[newA] = cards[newB];
@@ -45,10 +46,14 @@ public class Deck {
 
 	public void deal(int numCards, Player... playerList) {
 		for (int i = 0; i < numCards; i++) {
-			for (Player people : playerList) {
-				people.putCards(this.getTopCard());
+			for (Player person : playerList) {
+				person.putCards(this.getTopCard());
 			}
 		}
+	}
+
+	public int getRemainingCardCount() {
+		return cards.length - cardCount;
 	}
 
 }

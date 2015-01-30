@@ -1,12 +1,14 @@
 package net.example.blackjack;
 
+import java.util.Random;
+
 public class Blackjack {
 	final Deck cards;
 	final Player human, dealer;
 	private boolean keepGoing = true;
 
 	public Blackjack() {
-		cards = new Deck();
+		cards = new Deck(new Random());
 		human = new Player("Player");
 		dealer = new Player("Dealer");
 	}
@@ -21,7 +23,7 @@ public class Blackjack {
 	}
 
 	private void playerLoop() {
-		while ((!over21(human) && this.getKeepGoing()) {
+		while ((!over21(human) && this.getKeepGoing())) {
 			human.hitOrStand(cards, this);
 		}
 	}
