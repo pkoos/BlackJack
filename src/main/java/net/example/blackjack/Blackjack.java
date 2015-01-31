@@ -55,8 +55,8 @@ public class Blackjack {
 	public void setKeepGoing(boolean keepGoing) {
 		this.keepGoing = keepGoing;
 	}
-	
-	public  boolean getKeepGoing() {
+
+	public boolean getKeepGoing() {
 		return this.keepGoing;
 	}
 
