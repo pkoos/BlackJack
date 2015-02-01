@@ -12,7 +12,7 @@ public class Player {
 
 	public Player(String name) {
 		this.name = name;
-		hand = new Card[5];
+		hand = new Card[11];
 	}
 
 	public void checkHand(Card[] hand) {

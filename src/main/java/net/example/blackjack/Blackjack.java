@@ -33,7 +33,7 @@ public class Blackjack {
 	}
 
 	private void dealerLoop() {
-		boolean keepGoing = true;
+		keepGoing = true;
 		while (keepGoing) {
 			if (dealer.getPlayerScore() > 16) {
 				dealer.stand(this);
@@ -44,11 +44,11 @@ public class Blackjack {
 
 	}
 
-	private Player calculateWinner(Player p1, Player p2) {
+	private String calculateWinner(Player p1, Player p2) {
 		if (p1.getPlayerScore() > p2.getPlayerScore()) {
-			return p1;
+			return p1.name;
 		} else {
-			return p2;
+			return p2.name;
 		}
 	}
 

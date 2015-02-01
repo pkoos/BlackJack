@@ -66,14 +66,11 @@ public class DeckTest {
 	public void remainingCardCount_decreases_by_the_number_of_cards_pulled() {
 		Deck d = new Deck(new Random());
 
-		assertEquals(52, d.getRemainingCardCount());
-		d.getTopCard();
-		assertEquals(51, d.getRemainingCardCount());
-		d.getTopCard();
-		assertEquals(50, d.getRemainingCardCount());
-		d.getTopCard();
-		assertEquals(49, d.getRemainingCardCount());
-		d.getTopCard();
+		for (int i = 0; i < 51; i++) {
+			assertEquals(52 - i, d.getRemainingCardCount());
+			d.getTopCard();
+		}
+
 	}
 
 	@Test
