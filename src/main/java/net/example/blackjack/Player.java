@@ -16,11 +16,10 @@ public class Player {
 	}
 
 	public void checkHand(Card[] hand) {
-		for (int i = 0; i < hand.length; i++) {
-			Card temp = hand[i];
-			if (temp != null) {
-				System.out.println(temp);
-				playerScore += temp.getCardValue();
+		for (Card c : hand) {
+			if (c != null) {
+				System.out.println(c);
+				playerScore += c.getCardValue();
 			}
 		}
 		System.out.println(this);
@@ -65,6 +64,11 @@ public class Player {
 	// removed.
 	private void setPlayerScore(int playerScore) {
 		this.playerScore = playerScore;
+	}
+	
+	public void addToPlayerScore(int addition) {
+		this.playerScore += addition;
+		
 	}
 
 	public int getPlayerScore() {

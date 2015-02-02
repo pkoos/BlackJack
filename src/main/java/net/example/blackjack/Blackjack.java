@@ -34,6 +34,11 @@ public class Blackjack {
 
 	private void dealerLoop() {
 		keepGoing = true;
+		for(Card c : dealer.hand) {
+			if(c != null) {
+				dealer.addToPlayerScore(c.getCardValue());
+			}
+		}
 		while (keepGoing) {
 			if (dealer.getPlayerScore() > 16) {
 				dealer.stand(this);
@@ -58,6 +63,12 @@ public class Blackjack {
 
 	public boolean getKeepGoing() {
 		return this.keepGoing;
+	}
+	
+	public void calculateAceValue(Card card,Player player) {
+		if(player.getPlayerScore() < 11) {
+			
+		}
 	}
 
 }

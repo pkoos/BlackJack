@@ -12,8 +12,12 @@ public class Card {
 	public int getCardValue() {
 		return cardVal;
 	}
+	
+	public Rank getCardRank() {
+		return this.rank;
+	}
 
 	public String toString() {
-		return "" + this.rank + " worth " + this.cardVal + ".";
+		return "" + getCardRank() + " worth " + getCardValue() + ".";
 	}
 }
