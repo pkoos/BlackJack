@@ -14,6 +14,7 @@ public class Hand {
 	// the hand.
 	public void addCardToHand(Card c) {
 		hand.add(c);
+		calculateHandScore();
 	}
 
 	public void checkHand() {
@@ -31,7 +32,7 @@ public class Hand {
 		return hand.size();
 	}
 
-	public void calculateHandScore() {
+	private void calculateHandScore() {
 		handScore = 0;
 		int maxValue = hand.size();
 		for (int i = 0; i < maxValue; i++) {

@@ -32,6 +32,8 @@ public class Blackjack {
 		return player.showHand().getHandScore() > 21;
 	}
 
+	// This is an infinite loop at this point, the
+	// score isn't updating correctly.
 	private void dealerLoop() {
 		keepGoing = true;
 		while (keepGoing) {

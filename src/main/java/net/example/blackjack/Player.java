@@ -26,7 +26,6 @@ public class Player {
 		case "HIT":
 			System.out.println("Dealing a card.");
 			this.hit(deck.getTopCard());
-			showHand().calculateHandScore();
 			break;
 		case "STAND":
 			System.out.println("Standing");
@@ -45,6 +44,7 @@ public class Player {
 	// Needs reworking to work with the new Hand class
 	public void hit(Card c) {
 		System.out.println(c);
+		handOfCards.addCardToHand(c);
 		System.out.println(this);
 	}
 
