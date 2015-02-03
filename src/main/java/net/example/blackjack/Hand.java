@@ -1,7 +1,6 @@
 package net.example.blackjack;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Hand {
 	private ArrayList<Card> hand;
@@ -11,6 +10,8 @@ public class Hand {
 		hand = new ArrayList<Card>();
 	}
 
+	// This method isn't actually adding the card to
+	// the hand.
 	public void addCardToHand(Card c) {
 		hand.add(c);
 	}
@@ -18,28 +19,24 @@ public class Hand {
 	public void checkHand() {
 		for (int i = 0; i < hand.size(); i++) {
 			System.out.println(hand.get(i));
-			handScore += hand.get(i).getCardValue();
 		}
-	}
-
-	public void calculateAceScore() {
-
-	}
-
-	public void initialHandScore(int handScore) {
-
-	}
-
-	public void changeHandScore() {
-
+		calculateHandScore();
 	}
 
 	public int getHandScore() {
-
 		return handScore;
 	}
 
 	public int getHandSize() {
 		return hand.size();
 	}
+
+	public void calculateHandScore() {
+		handScore = 0;
+		int maxValue = hand.size();
+		for (int i = 0; i < maxValue; i++) {
+			handScore += hand.get(i).getCardValue();
+		}
+	}
+
 }

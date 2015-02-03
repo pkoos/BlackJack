@@ -40,6 +40,7 @@ public class Deck {
 		if (cardCount == 52) {
 			this.shuffle();
 			System.out.println("Out of cards, shuffling the deck");
+			cardCount = 0;
 		}
 		return temp;
 	}

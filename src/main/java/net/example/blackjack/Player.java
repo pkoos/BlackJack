@@ -17,6 +17,7 @@ public class Player {
 	}
 
 	public void hitOrStand(Deck deck, Blackjack blackjack) {
+		System.out.println(this);
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
 
@@ -25,6 +26,7 @@ public class Player {
 		case "HIT":
 			System.out.println("Dealing a card.");
 			this.hit(deck.getTopCard());
+			showHand().calculateHandScore();
 			break;
 		case "STAND":
 			System.out.println("Standing");
