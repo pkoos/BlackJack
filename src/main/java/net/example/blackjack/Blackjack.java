@@ -15,8 +15,8 @@ public class Blackjack {
 
 	public void play() {
 		cards.shuffle();
-		cards.deal(2, human, dealer);
-		human.checkHand(human.hand);
+		cards.deal(2, human.showHand(), dealer.showHand());
+		human.showHand().checkHand();
 		playerLoop();
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
@@ -29,18 +29,13 @@ public class Blackjack {
 	}
 
 	private boolean over21(Player player) {
-		return player.getPlayerScore() > 21;
+		return player.showHand().getHandScore() > 21;
 	}
 
 	private void dealerLoop() {
 		keepGoing = true;
-		for(Card c : dealer.hand) {
-			if(c != null) {
-				dealer.addToPlayerScore(c.getCardValue());
-			}
-		}
 		while (keepGoing) {
-			if (dealer.getPlayerScore() > 16) {
+			if (dealer.showHand().getHandScore() > 16) {
 				dealer.stand(this);
 			} else {
 				dealer.hit(cards.getTopCard());
@@ -50,7 +45,7 @@ public class Blackjack {
 	}
 
 	private String calculateWinner(Player p1, Player p2) {
-		if (p1.getPlayerScore() > p2.getPlayerScore()) {
+		if (p1.showHand().getHandScore() > p2.showHand().getHandScore()) {
 			return p1.name;
 		} else {
 			return p2.name;
@@ -63,12 +58,6 @@ public class Blackjack {
 
 	public boolean getKeepGoing() {
 		return this.keepGoing;
-	}
-	
-	public void calculateAceValue(Card card,Player player) {
-		if(player.getPlayerScore() < 11) {
-			
-		}
 	}
 
 }

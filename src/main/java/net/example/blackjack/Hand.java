@@ -1,22 +1,45 @@
 package net.example.blackjack;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class Hand {
-	Card[] hand;
+	private ArrayList<Card> hand;
 	private int handScore;
 
-	public Hand(Player player, int initialCards) {
-		this.fillHand(initialCards);
+	public Hand() {
+		hand = new ArrayList<Card>();
 	}
 
-	public void fillHand(int numCards) {
+	public void addCardToHand(Card c) {
+		hand.add(c);
+	}
 
+	public void checkHand() {
+		for (int i = 0; i < hand.size(); i++) {
+			System.out.println(hand.get(i));
+			handScore += hand.get(i).getCardValue();
+		}
 	}
 
 	public void calculateAceScore() {
 
 	}
 
-	public void setHandScore() {
-		
+	public void initialHandScore(int handScore) {
+
+	}
+
+	public void changeHandScore() {
+
+	}
+
+	public int getHandScore() {
+
+		return handScore;
+	}
+
+	public int getHandSize() {
+		return hand.size();
 	}
 }

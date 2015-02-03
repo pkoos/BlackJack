@@ -4,25 +4,16 @@ import java.util.Scanner;
 
 public class Player {
 	final String name;
-	private int playerScore;
-	final Card[] hand;
-	private int numCards;
+	private Hand handOfCards = new Hand();
 	private Scanner input = new Scanner(System.in);
 	private String playerInput;
 
 	public Player(String name) {
 		this.name = name;
-		hand = new Card[11];
 	}
 
-	public void checkHand(Card[] hand) {
-		for (Card c : hand) {
-			if (c != null) {
-				System.out.println(c);
-				playerScore += c.getCardValue();
-			}
-		}
-		System.out.println(this);
+	public void requestCard(Card c) {
+		handOfCards.addCardToHand(c);
 	}
 
 	public void hitOrStand(Deck deck, Blackjack blackjack) {
@@ -49,33 +40,17 @@ public class Player {
 		blackJack.setKeepGoing(false);
 	}
 
+	// Needs reworking to work with the new Hand class
 	public void hit(Card c) {
-		this.putCards(c);
 		System.out.println(c);
-		playerScore += c.getCardValue();
 		System.out.println(this);
 	}
 
-	public void putCards(Card c) {
-		this.hand[numCards++] = c;
-	}
-
-	// This method may never be used. If that's the case, then it can be
-	// removed.
-	private void setPlayerScore(int playerScore) {
-		this.playerScore = playerScore;
-	}
-	
-	public void addToPlayerScore(int addition) {
-		this.playerScore += addition;
-		
-	}
-
-	public int getPlayerScore() {
-		return playerScore;
+	public Hand showHand() {
+		return handOfCards;
 	}
 
 	public String toString() {
-		return "Total Score: " + playerScore + ".";
+		return "Total Score: " + handOfCards.getHandScore() + ".";
 	}
 }

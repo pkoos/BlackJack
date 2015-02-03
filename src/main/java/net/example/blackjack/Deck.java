@@ -44,10 +44,10 @@ public class Deck {
 		return temp;
 	}
 
-	public void deal(int numCards, Player... playerList) {
+	public void deal(int numCards, Hand... listOfHands) {
 		for (int i = 0; i < numCards; i++) {
-			for (Player person : playerList) {
-				person.putCards(this.getTopCard());
+			for (Hand playerHand : listOfHands) {
+				playerHand.addCardToHand(getTopCard());
 			}
 		}
 	}
