@@ -63,9 +63,19 @@ public class Blackjack {
 	}
 
 	public void blackjackRound(Player... player) {
+		while(getGameKeepGoing()) {
+			if(over21(player)) {
+				setGameKeepGoing(false);
+				System.out.println("Player loses!");
+			}
+			if(over21(dealer)) {
+				setGameKeepGoing(false);
+				System.out.println("Dealer loses!");
+			}
+			playerLoop();
+			dealerLoop();
 		
-		playerLoop();
-		dealerLoop();
+		}
 	}
 
 }
