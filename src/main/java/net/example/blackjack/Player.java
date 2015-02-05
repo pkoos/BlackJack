@@ -7,6 +7,7 @@ public class Player {
 	private Hand handOfCards = new Hand();
 	private Scanner input = new Scanner(System.in);
 	private String playerInput;
+	private boolean keepGoing = true;
 
 	public Player(String name) {
 		this.name = name;
@@ -41,7 +42,6 @@ public class Player {
 		blackJack.setKeepGoing(false);
 	}
 
-	// Needs reworking to work with the new Hand class
 	public void hit(Card c) {
 		System.out.println(c);
 		handOfCards.addCardToHand(c);
@@ -53,6 +53,14 @@ public class Player {
 	}
 
 	public String toString() {
-		return "Total Score: " + handOfCards.getHandScore() + ".";
+		return "Total Score: " + handOfCards.calculateHandScore() + ".";
+	}
+
+	public boolean getKeepGoing() {
+		return keepGoing;
+	}
+
+	public void setKeepGoing(boolean keepGoing) {
+		this.keepGoing = keepGoing;
 	}
 }

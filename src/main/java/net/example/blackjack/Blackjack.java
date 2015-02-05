@@ -5,7 +5,7 @@ import java.util.Random;
 public class Blackjack {
 	final Deck cards;
 	final Player human, dealer;
-	private boolean keepGoing = true;
+	private boolean gameKeepGoing = true;
 
 	public Blackjack() {
 		cards = new Deck(new Random());
@@ -21,7 +21,8 @@ public class Blackjack {
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
-
+	
+	// This method needs to be reworked, it is currently broken
 	private void playerLoop() {
 		while ((!over21(human) && this.getKeepGoing())) {
 			human.hitOrStand(cards, this);
@@ -29,15 +30,13 @@ public class Blackjack {
 	}
 
 	private boolean over21(Player player) {
-		return player.showHand().getHandScore() > 21;
+		return player.showHand().calculateHandScore() > 21;
 	}
 
-	// This is an infinite loop at this point, the
-	// score isn't updating correctly.
 	private void dealerLoop() {
-		keepGoing = true;
-		while (keepGoing) {
-			if (dealer.showHand().getHandScore() > 16) {
+		dealer.setKeepGoing(true);
+		while (dealer.getKeepGoing()) {
+			if (dealer.showHand().calculateHandScore() > 16) {
 				dealer.stand(this);
 			} else {
 				dealer.hit(cards.getTopCard());
@@ -47,7 +46,8 @@ public class Blackjack {
 	}
 
 	private String calculateWinner(Player p1, Player p2) {
-		if (p1.showHand().getHandScore() > p2.showHand().getHandScore()) {
+		if (p1.showHand().calculateHandScore() > p2.showHand()
+				.calculateHandScore()) {
 			return p1.name;
 		} else {
 			return p2.name;
@@ -55,11 +55,17 @@ public class Blackjack {
 	}
 
 	public void setKeepGoing(boolean keepGoing) {
-		this.keepGoing = keepGoing;
+		this.gameKeepGoing = keepGoing;
 	}
 
-	public boolean getKeepGoing() {
-		return this.keepGoing;
+	public boolean getGameKeepGoing() {
+		return this.gameKeepGoing;
+	}
+
+	public void blackjackRound(Player... player) {
+		
+		playerLoop();
+		dealerLoop();
 	}
 
 }
