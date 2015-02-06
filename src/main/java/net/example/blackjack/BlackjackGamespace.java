@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class BlackjackGamespace implements GameSpace {
 	private ArrayList<Player> playerList = new ArrayList<Player>();
-	private BlackjackLogic blackjackLogic = new BlackjackLogic();
+	private BlackjackRules blackjackLogic = new BlackjackRules();
 
 	
-	public BlackjackGamespace(BlackjackLogic blackjackLogic, Player... players) {
+	public BlackjackGamespace(BlackjackRules blackjackLogic, Player... players) {
 		for(Player person : players) {
 			addPlayer(person);
 		}
@@ -32,7 +32,19 @@ public class BlackjackGamespace implements GameSpace {
 	}
 
 	@Override
-	public void addGameLogic(Logic l) {
+	public void addGameLogic(Rules l) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean hasAllPieces() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void addDealer(Dealer d) {
 		// TODO Auto-generated method stub
 		
 	}

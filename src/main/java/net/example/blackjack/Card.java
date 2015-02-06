@@ -2,7 +2,9 @@ package net.example.blackjack;
 
 public class Card {
 	final Rank rank;
+	// final Suit suit;
 	private final int cardVal;
+	// private final String COLOR;
 
 	public Card(Rank r) {
 		rank = r;
