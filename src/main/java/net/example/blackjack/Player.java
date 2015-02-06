@@ -39,7 +39,7 @@ public class Player {
 	}
 
 	public void stand(Blackjack blackJack) {
-		blackJack.setKeepGoing(false);
+		blackJack.setGameKeepGoing(false);
 	}
 
 	public void hit(Card c) {

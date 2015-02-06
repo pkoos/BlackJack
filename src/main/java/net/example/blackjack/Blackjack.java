@@ -24,7 +24,7 @@ public class Blackjack {
 	
 	// This method needs to be reworked, it is currently broken
 	private void playerLoop() {
-		while ((!over21(human) && this.getKeepGoing())) {
+		while ((!over21(human) && this.getGameKeepGoing())) {
 			human.hitOrStand(cards, this);
 		}
 	}
@@ -54,7 +54,7 @@ public class Blackjack {
 		}
 	}
 
-	public void setKeepGoing(boolean keepGoing) {
+	public void setGameKeepGoing(boolean keepGoing) {
 		this.gameKeepGoing = keepGoing;
 	}
 
@@ -62,9 +62,9 @@ public class Blackjack {
 		return this.gameKeepGoing;
 	}
 
-	public void blackjackRound(Player... player) {
+	public void blackjackRound() {
 		while(getGameKeepGoing()) {
-			if(over21(player)) {
+			if(over21(human)) {
 				setGameKeepGoing(false);
 				System.out.println("Player loses!");
 			}
