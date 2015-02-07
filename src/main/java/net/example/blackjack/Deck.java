@@ -6,14 +6,18 @@ public class Deck {
 	final Card cards[];
 	private int cardCount = 0;
 	private Random random;
-
-	public Deck(Random randNum) {
+	
+	// The deck needs to get some information from 
+	// the game rules, which isn't receiving currently
+	public Deck(Random randNum, CardGame gametype) {
 		this.random = randNum;
 		int counter = 0;
 		cards = new Card[52];
 		for (int i = 0; i < 4; i++) {
 			for (Rank r : Rank.values()) {
-				cards[counter] = new Card(r);
+				// This line needs to be fixed to operate and
+				// link to Blackjack
+				cards[counter] = new Card(r,10);
 				counter++;
 			}
 		}

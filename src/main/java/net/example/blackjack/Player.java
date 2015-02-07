@@ -48,12 +48,12 @@ public class Player {
 		System.out.println(this);
 	}
 
-	public Hand showHand() {
+	public Hand getHand() {
 		return handOfCards;
 	}
 
 	public String toString() {
-		return "Total Score: " + handOfCards.calculateHandScore() + ".";
+		return "Total Score: " + handOfCards.calculateBlackjackHandScore() + ".";
 	}
 
 	public boolean getKeepGoing() {

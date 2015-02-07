@@ -9,16 +9,17 @@ public class Hand  {
 		hand = new ArrayList<Card>();
 	}
 
+	// Works only with Blackjack, needs to be adjusted
 	public void addCardToHand(Card c) {
 		hand.add(c);
-		calculateHandScore();
+		calculateBlackjackHandScore();
 	}
 
 	public void checkHand() {
 		for (int i = 0; i < hand.size(); i++) {
 			System.out.println(hand.get(i));
 		}
-		calculateHandScore();
+		calculateBlackjackHandScore();
 	}
 
 	public int getHandSize() {
@@ -26,7 +27,11 @@ public class Hand  {
 	}
 
 	// And boom goes the dynamite!
-	public int calculateHandScore() {
+	// This was originally calculateHandScore(),
+	// and only works for Blackjack. This method
+	// needs to be refactored to work with more
+	//than one game. 2/6/15 3:26pm
+	public int calculateBlackjackHandScore() {
 		int handScore = 0;
 		boolean hasAce = false;
 		int maxValue = hand.size();

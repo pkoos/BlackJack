@@ -21,11 +21,11 @@ public class DeckTest {
 		Player player3 = mock(Player.class);
 		Player players[] = { player1, player2, player3 };
 		// Act
-		d.deal(4, player1.showHand(), player2.showHand(), player3.showHand());
+		d.deal(4, player1.getHand(), player2.getHand(), player3.getHand());
 
 		// Assert
 		for (Player person : players) {
-			verify(person, times(4)).showHand().addCardToHand(any(Card.class));
+			verify(person, times(4)).getHand().addCardToHand(any(Card.class));
 		}
 		// deck is not shuffled, should pull king since 12 card dealt
 		assertEquals(Rank.King, d.getTopCard().rank);
