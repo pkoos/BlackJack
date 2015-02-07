@@ -15,17 +15,17 @@ public class DeckTest {
 	@Test
 	public void can_deal_an_arbitrary_number_of_cards_to_a_list_of_players() {
 		// Arrange
-		Deck d = new Deck(new Random());
-		Player player1 = mock(Player.class);
-		Player player2 = mock(Player.class);
-		Player player3 = mock(Player.class);
-		Player players[] = { player1, player2, player3 };
+		BlackjackDeck d = new BlackjackDeck(new Random());
+		BlackjackPlayer player1 = mock(BlackjackPlayer.class);
+		BlackjackPlayer player2 = mock(BlackjackPlayer.class);
+		BlackjackPlayer player3 = mock(BlackjackPlayer.class);
+		BlackjackPlayer players[] = { player1, player2, player3 };
 		// Act
-		d.deal(4, player1.getHand(), player2.getHand(), player3.getHand());
+		d.deal(4, player1, player2, player3);
 
 		// Assert
-		for (Player person : players) {
-			verify(person, times(4)).getHand().addCardToHand(any(Card.class));
+		for (BlackjackPlayer person : players) {
+			verify(person, times(4)).getHand().addCard(any(Card.class));
 		}
 		// deck is not shuffled, should pull king since 12 card dealt
 		assertEquals(Rank.King, d.getTopCard().rank);
@@ -34,7 +34,7 @@ public class DeckTest {
 	@Test
 	public void is_in_sorted_order_by_rank_when_created() {
 		// Arrange/Act
-		Deck d = new Deck(new Random());
+		BlackjackDeck d = new BlackjackDeck(new Random());
 
 		// Assert
 		assertEquals(Rank.Ace, d.getTopCard().rank);
@@ -55,7 +55,7 @@ public class DeckTest {
 
 	@Test
 	public void shuffle_maintains_the_current_size() {
-		Deck d = new Deck(new Random());
+		BlackjackDeck d = new BlackjackDeck(new Random());
 
 		d.shuffle();
 
@@ -64,7 +64,7 @@ public class DeckTest {
 
 	@Test
 	public void remainingCardCount_decreases_by_the_number_of_cards_pulled() {
-		Deck d = new Deck(new Random());
+		BlackjackDeck d = new BlackjackDeck(new Random());
 
 		for (int i = 0; i < 51; i++) {
 			assertEquals(52 - i, d.getRemainingCardCount());
@@ -77,7 +77,7 @@ public class DeckTest {
 	public void shuffle_randomizes_the_order_of_cards() {
 		Random r = new Random();
 		r.setSeed(12L);
-		Deck d = new Deck(r);
+		BlackjackDeck d = new BlackjackDeck(r);
 
 		d.shuffle();
 
@@ -92,7 +92,7 @@ public class DeckTest {
 	public void shuffle_maintains_four_of_each_card_rank() {
 		Random r = new Random();
 		r.setSeed(12L);
-		Deck d = new Deck(r);
+		BlackjackDeck d = new BlackjackDeck(r);
 
 		d.shuffle();
 
@@ -104,7 +104,7 @@ public class DeckTest {
 
 	}
 
-	public int countTheCards(Rank cardRank, Deck deck) {
+	public int countTheCards(Rank cardRank, BlackjackDeck deck) {
 		int counter = 0;
 		for (Card card : deck.cards) {
 			if (card.rank == cardRank) {

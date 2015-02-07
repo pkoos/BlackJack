@@ -4,19 +4,20 @@ import java.util.Random;
 
 public class War {
 	final Deck cards;
-	final Player human, computer;
+	final BlackjackPlayer human, computer;
+
 	public War() {
 		// This line needs to be corrected
-		cards = new Deck(new Random(), new Blackjack());
-		human = new Player("human");
-		computer = new Player("computer");
-		
+		cards = new WarDeck(new Random());
+		human = new BlackjackPlayer("human");
+		computer = new BlackjackPlayer("computer");
+
 	}
-	
+
 	public void play() {
 		cards.shuffle();
-		cards.deal(52,human.getHand(),computer.getHand());
-		
+		cards.deal(52, human, computer);
+
 	}
 
 }

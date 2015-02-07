@@ -13,7 +13,7 @@ public class PlayerTest {
 
 	@Test
 	public void calculates_all_cards_in_hand_as_playerScore() {
-		Player player1 = new Player(null);
+		BlackjackPlayer player1 = new BlackjackPlayer(null);
 
 		fail("TODO");
 	}

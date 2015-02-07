@@ -14,7 +14,7 @@ public interface GameSpace {
 	// This is the method that puts the player into the GameSpace
 	// one at a time. This might be implemented as some type of
 	// Player collection
-	public void addPlayer(Player p);
+	public void addPlayer(BlackjackPlayer p);
 	
 	public void addDealer(Dealer d);
 

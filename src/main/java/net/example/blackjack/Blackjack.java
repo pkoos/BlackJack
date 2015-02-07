@@ -3,19 +3,19 @@ package net.example.blackjack;
 import java.util.Random;
 
 public class Blackjack extends CardGame {
-	final Deck cards;
-	final Player human, dealer;
+	final BlackjackDeck cards;
+	final BlackjackPlayer human, dealer;
 	private boolean gameKeepGoing = true;
 
 	public Blackjack() {
-		cards = new Deck(new Random(), this);
-		human = new Player("Player");
-		dealer = new Player("Dealer");
+		cards = new BlackjackDeck(new Random());
+		human = new BlackjackPlayer("Player");
+		dealer = new BlackjackPlayer("Dealer");
 	}
 
 	public void play() {
 		cards.shuffle();
-		cards.deal(2, human.getHand(), dealer.getHand());
+		cards.deal(2, human, dealer);
 		human.getHand().checkHand();
 		playerLoop();
 		dealerLoop();
@@ -29,14 +29,14 @@ public class Blackjack extends CardGame {
 		}
 	}
 
-	private boolean over21(Player player) {
-		return player.getHand().calculateBlackjackHandScore() > 21;
+	private boolean over21(BlackjackPlayer player) {
+		return player.getHand().getScore() > 21;
 	}
 
 	private void dealerLoop() {
 		dealer.setKeepGoing(true);
 		while (dealer.getKeepGoing()) {
-			if (dealer.getHand().calculateBlackjackHandScore() > 16) {
+			if (dealer.getHand().getScore() > 16) {
 				dealer.stand(this);
 			} else {
 				dealer.hit(cards.getTopCard());
@@ -45,9 +45,9 @@ public class Blackjack extends CardGame {
 
 	}
 
-	private String calculateWinner(Player p1, Player p2) {
-		if (p1.getHand().calculateBlackjackHandScore() > p2.getHand()
-				.calculateBlackjackHandScore()) {
+	private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
+		if (p1.getHand().getScore() > p2.getHand()
+				.getScore()) {
 			return p1.name;
 		} else {
 			return p2.name;

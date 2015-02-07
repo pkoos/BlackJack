@@ -9,21 +9,18 @@ public class Card {
 
 	public Card(Rank r, int cardVal) {
 		rank = r;
-		
-		// Blackjack specific
-		setCardValue(0);
-		cardVal = Math.min(10, rank.ordinal() + 1);
-		this.visible = visible;
+
+		this.cardVal = cardVal;
 	}
 
 	public int getCardValue() {
 		return cardVal;
 	}
-	
+
 	public void setCardValue(int cardVal) {
 		this.cardVal = cardVal;
 	}
-	
+
 	public Rank getCardRank() {
 		return this.rank;
 	}
