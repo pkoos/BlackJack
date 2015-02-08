@@ -16,7 +16,8 @@ public class Blackjack extends CardGame {
 	public void play() {
 		cards.shuffle();
 		cards.deal(2, human, dealer);
-		human.getHand().checkHand();
+		human.checkCards();
+		System.out.println(human);
 		playerLoop();
 		dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
@@ -30,13 +31,13 @@ public class Blackjack extends CardGame {
 	}
 
 	private boolean over21(BlackjackPlayer player) {
-		return player.getHand().getScore() > 21;
+		return player.checkScore() > 21;
 	}
 
 	private void dealerLoop() {
 		dealer.setKeepGoing(true);
 		while (dealer.getKeepGoing()) {
-			if (dealer.getHand().getScore() > 16) {
+			if (dealer.checkScore() > 16) {
 				dealer.stand(this);
 			} else {
 				dealer.hit(cards.getTopCard());
@@ -46,8 +47,7 @@ public class Blackjack extends CardGame {
 	}
 
 	private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
-		if (p1.getHand().getScore() > p2.getHand()
-				.getScore()) {
+		if (p1.checkScore() > p2.checkScore()) {
 			return p1.name;
 		} else {
 			return p2.name;

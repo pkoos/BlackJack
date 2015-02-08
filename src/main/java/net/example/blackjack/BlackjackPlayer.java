@@ -2,7 +2,7 @@ package net.example.blackjack;
 
 import java.util.Scanner;
 
-public class BlackjackPlayer implements Player{
+public class BlackjackPlayer implements Player {
 	final String name;
 	private BlackjackHand handOfCards = new BlackjackHand();
 	private Scanner input = new Scanner(System.in);
@@ -18,7 +18,6 @@ public class BlackjackPlayer implements Player{
 	}
 
 	public void hitOrStand(BlackjackDeck deck, Blackjack blackjack) {
-		System.out.println(this);
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
 
@@ -48,13 +47,12 @@ public class BlackjackPlayer implements Player{
 		System.out.println(this);
 	}
 
-	public BlackjackHand getHand() {
-		return handOfCards;
+	public int checkScore() {
+		return handOfCards.getScore();
 	}
 
 	public String toString() {
-		return "Total Score: " + handOfCards.getScore()
-				+ ".";
+		return "Total Score: " + checkScore() + ".";
 	}
 
 	public boolean getKeepGoing() {
@@ -64,4 +62,9 @@ public class BlackjackPlayer implements Player{
 	public void setKeepGoing(boolean keepGoing) {
 		this.keepGoing = keepGoing;
 	}
+	
+	public void checkCards() {
+		handOfCards.checkHand();
+	}
+
 }

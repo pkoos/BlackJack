@@ -25,7 +25,7 @@ public class DeckTest {
 
 		// Assert
 		for (BlackjackPlayer person : players) {
-			verify(person, times(4)).getHand().addCard(any(Card.class));
+			verify(person, times(4)).requestCard(any(Card.class));
 		}
 		// deck is not shuffled, should pull king since 12 card dealt
 		assertEquals(Rank.King, d.getTopCard().rank);
