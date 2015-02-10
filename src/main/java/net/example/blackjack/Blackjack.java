@@ -47,6 +47,13 @@ public class Blackjack extends CardGame {
 	}
 
 	private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
+		
+		if(p1.checkScore() > 21) {
+			return p2.name;
+		}
+		if(p2.checkScore() > 21) {
+			return p1.name;
+		}
 		if (p1.checkScore() > p2.checkScore()) {
 			return p1.name;
 		} else {
