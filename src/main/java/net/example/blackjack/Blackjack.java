@@ -36,7 +36,7 @@ public class Blackjack extends CardGame {
 
 	private void dealerLoop() {
 		dealer.setKeepGoing(true);
-		while (dealer.getKeepGoing()) {
+		while (getGameKeepGoing()) {
 			if (dealer.checkScore() > 16) {
 				dealer.stand(this);
 			} else {
