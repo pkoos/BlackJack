@@ -13,11 +13,9 @@ public class BlackjackDeck implements Deck {
 		this.random = randNum;
 		int counter = 0;
 		cards = new Card[52];
-		for (int i = 0; i < 4; i++) {
-			for (Rank r : Rank.values()) {
-				// This line needs to be fixed to operate and
-				// link to Blackjack
-				cards[counter] = new Card(r, Math.min(10, r.ordinal() + 1));
+		for(Suit s : Suit.values()) {
+			for(Rank r : Rank.values()) {
+				cards[counter] = new Card(r,s,Math.min(10, r.ordinal() +1));
 				counter++;
 			}
 		}

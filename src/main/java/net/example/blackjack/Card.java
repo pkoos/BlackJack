@@ -2,13 +2,15 @@ package net.example.blackjack;
 
 public class Card {
 	final Rank rank;
-	// final Suit suit;
+	final Suit suit;
 	private int cardVal;
-	// private final String COLOR;
+	private String color;
 	private boolean visible;
 
-	public Card(Rank r, int cardVal) {
+	public Card(Rank r, Suit s, int cardVal) {
 		rank = r;
+		suit = s;
+		color = setColor(s);
 
 		this.cardVal = cardVal;
 	}
@@ -23,6 +25,15 @@ public class Card {
 
 	public Rank getCardRank() {
 		return this.rank;
+	}
+
+	private String setColor(Suit s) {
+		if (s == Suit.Club || s == Suit.Spade) {
+			return "Black";
+		} else {
+			return "Red";
+		}
+
 	}
 
 	public String toString() {
