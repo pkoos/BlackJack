@@ -18,14 +18,25 @@ public class Blackjack extends CardGame {
 		cards.deal(2, human, dealer);
 		human.checkCards();
 		System.out.println(human);
-		playerLoop();
-		dealerLoop();
+
+		// This exception not working correctly, does not display correct
+		// message
+		try {
+			playerLoop();
+			dealerLoop();
+		} catch (PlayerBustsException e) {
+			System.out.println(e);
+		}
+		// playerLoop();
+		// dealerLoop();
 		System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
 
-	// This method needs to be reworked, it is currently broken
-	private void playerLoop() {
-		while ((!over21(human) && this.getGameKeepGoing())) {
+	private void playerLoop() throws PlayerBustsException {
+		while ((this.getGameKeepGoing())) {
+			if (over21(human)) {
+				throw new PlayerBustsException(human);
+			}
 			human.hitOrStand(cards, this);
 		}
 	}
@@ -35,7 +46,8 @@ public class Blackjack extends CardGame {
 	}
 
 	private void dealerLoop() {
-		dealer.setKeepGoing(true);
+		dealer.checkCards();
+		setGameKeepGoing(true);
 		while (getGameKeepGoing()) {
 			if (dealer.checkScore() > 16) {
 				dealer.stand(this);
@@ -47,12 +59,15 @@ public class Blackjack extends CardGame {
 	}
 
 	private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
-		
-		if(p1.checkScore() > 21) {
+
+		if (p1.checkScore() > 21) {
 			return p2.name;
 		}
-		if(p2.checkScore() > 21) {
+		if (p2.checkScore() > 21) {
 			return p1.name;
+		}
+		if (p1.checkScore() == p2.checkScore()) {
+			return "It's a push!";
 		}
 		if (p1.checkScore() > p2.checkScore()) {
 			return p1.name;
@@ -87,6 +102,11 @@ public class Blackjack extends CardGame {
 
 	public int setCardVal(Card c) {
 		return Math.min(10, c.rank.ordinal() + 1);
+	}
+
+	public boolean bust(BlackjackPlayer p) {
+
+		return p.checkScore() > 21;
 	}
 
 }

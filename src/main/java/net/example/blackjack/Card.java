@@ -6,7 +6,6 @@ public class Card {
 	private int cardVal;
 	private String color;
 	private boolean visible;
-	private final StringBuffer sb = new StringBuffer();
 
 	public Card(Rank r, Suit s, int cardVal) {
 		rank = r;
@@ -46,16 +45,11 @@ public class Card {
 	}
 
 	public String toString() {
+		StringBuffer sb = new StringBuffer();
 
-		return sb.append(getCardRank())
-				.append(" of ")
-				.append(getCardSuit())
-				.append("s (")
-				.append(getCardColor())
-				.append(") worth ")
-				.append(getCardValue())
-				.append(".")
-				.toString();
+		return sb.append(getCardRank()).append(" of ").append(getCardSuit())
+				.append("s (").append(getCardColor()).append(") worth ")
+				.append(getCardValue()).append(".").toString();
 
 	}
 
