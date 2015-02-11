@@ -6,6 +6,7 @@ public class Card {
 	private int cardVal;
 	private String color;
 	private boolean visible;
+	private final StringBuffer sb = new StringBuffer();
 
 	public Card(Rank r, Suit s, int cardVal) {
 		rank = r;
@@ -27,6 +28,14 @@ public class Card {
 		return this.rank;
 	}
 
+	public Suit getCardSuit() {
+		return this.suit;
+	}
+
+	public String getCardColor() {
+		return this.color;
+	}
+
 	private String setColor(Suit s) {
 		if (s == Suit.Club || s == Suit.Spade) {
 			return "Black";
@@ -37,7 +46,17 @@ public class Card {
 	}
 
 	public String toString() {
-		return "" + getCardRank() + " worth " + getCardValue() + ".";
+
+		return sb.append(getCardRank())
+				.append(" of ")
+				.append(getCardSuit())
+				.append("s (")
+				.append(getCardColor())
+				.append(") worth ")
+				.append(getCardValue())
+				.append(".")
+				.toString();
+
 	}
 
 	public boolean isVisible() {
@@ -47,4 +66,5 @@ public class Card {
 	public void setVisible(boolean visible) {
 		this.visible = visible;
 	}
+
 }
