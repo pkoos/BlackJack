@@ -48,8 +48,7 @@ public class Card {
 		StringBuffer sb = new StringBuffer();
 
 		return sb.append(getCardRank()).append(" of ").append(getCardSuit())
-				.append("s (").append(getCardColor()).append(") worth ")
-				.append(getCardValue()).append(".").toString();
+				.append("s (").append(getCardColor()).append(").").toString();
 
 	}
 

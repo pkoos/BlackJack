@@ -24,7 +24,7 @@ public class Blackjack extends CardGame {
         } catch (PlayerBustsException e) {
 
         }
-        System.out.println(calculateWinner(human, dealer) + " wins!");
+        System.out.println(calculateWinner(human, dealer));
 	}
 
 	private void playerLoop() throws PlayerBustsException {
@@ -58,19 +58,19 @@ public class Blackjack extends CardGame {
 
 	private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
 
+        if (p1.checkScore() == p2.checkScore()) {
+            return "It's a push!";
+        }
 		if (p1.checkScore() > 21) {
-			return p2.name;
+			return p2.name + " wins!";
 		}
 		if (p2.checkScore() > 21) {
-			return p1.name;
-		}
-		if (p1.checkScore() == p2.checkScore()) {
-			return "It's a push!";
+			return p1.name + " wins!";
 		}
 		if (p1.checkScore() > p2.checkScore()) {
-			return p1.name;
+			return p1.name + " wins!";
 		} else {
-			return p2.name;
+			return p2.name + " wins!";
 		}
 	}
 
