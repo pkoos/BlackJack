@@ -1,11 +1,9 @@
 package net.example.blackjack;
 
-public class PlayerBustsException extends RuntimeException {
-	public PlayerBustsException(BlackjackPlayer p) {
-		System.out.println(this);
-	}
+public class PlayerBustsException extends Exception {
+    public PlayerBustsException(BlackjackPlayer p, String message) {
+        System.out.println(p.getName() + " " + message);
 
-	public String toString(BlackjackPlayer p) {
-		return p.getName() + " busts!";
-	}
+    }
+
 }

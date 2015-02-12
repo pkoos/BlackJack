@@ -14,28 +14,23 @@ public class Blackjack extends CardGame {
 	}
 
 	public void play() {
-		cards.shuffle();
-		cards.deal(2, human, dealer);
-		human.checkCards();
-		System.out.println(human);
+        try {
+            cards.shuffle();
+            cards.deal(2, human, dealer);
+            human.checkCards();
+            System.out.println(human);
+                playerLoop();
+                dealerLoop();
+        } catch (PlayerBustsException e) {
 
-		// This exception not working correctly, does not display correct
-		// message
-		try {
-			playerLoop();
-			dealerLoop();
-		} catch (PlayerBustsException e) {
-			System.out.println(e);
-		}
-		// playerLoop();
-		// dealerLoop();
-		System.out.println(calculateWinner(human, dealer) + " wins!");
+        }
+        System.out.println(calculateWinner(human, dealer) + " wins!");
 	}
 
 	private void playerLoop() throws PlayerBustsException {
 		while ((this.getGameKeepGoing())) {
 			if (over21(human)) {
-				throw new PlayerBustsException(human);
+				throw new PlayerBustsException(human, "busts!");
 			}
 			human.hitOrStand(cards, this);
 		}
@@ -83,7 +78,7 @@ public class Blackjack extends CardGame {
 	public boolean getGameKeepGoing() {
 		return this.gameKeepGoing;
 	}
-
+    /*
 	public void blackjackRound() {
 		while (getGameKeepGoing()) {
 			if (over21(human)) {
@@ -99,7 +94,7 @@ public class Blackjack extends CardGame {
 
 		}
 	}
-
+*/
 	public int setCardVal(Card c) {
 		return Math.min(10, c.rank.ordinal() + 1);
 	}
