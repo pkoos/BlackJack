@@ -40,10 +40,13 @@ public class Blackjack extends CardGame {
 		return player.checkScore() > 21;
 	}
 
-	private void dealerLoop() {
+	private void dealerLoop() throws PlayerBustsException {
 		dealer.checkCards();
 		setGameKeepGoing(true);
 		while (getGameKeepGoing()) {
+            if(over21(dealer)) {
+                throw new PlayerBustsException(dealer,"busts!");
+            }
 			if (dealer.checkScore() > 16) {
 				dealer.stand(this);
 			} else {
@@ -78,24 +81,7 @@ public class Blackjack extends CardGame {
 	public boolean getGameKeepGoing() {
 		return this.gameKeepGoing;
 	}
-    /*
-	public void blackjackRound() {
-		while (getGameKeepGoing()) {
-			if (over21(human)) {
-				setGameKeepGoing(false);
-				System.out.println("Player loses!");
-			}
-			if (over21(dealer)) {
-				setGameKeepGoing(false);
-				System.out.println("Dealer loses!");
-			}
-			playerLoop();
-			dealerLoop();
-
-		}
-	}
-*/
-	public int setCardVal(Card c) {
+    	public int setCardVal(Card c) {
 		return Math.min(10, c.rank.ordinal() + 1);
 	}
 
