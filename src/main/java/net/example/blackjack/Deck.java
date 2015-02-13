@@ -1,11 +1,29 @@
 package net.example.blackjack;
 
-public interface Deck {
-	public void shuffle();
+import java.util.Collection;
 
-	public Card getTopCard();
+public abstract class Deck<T> {
+  abstract T[] getValidCards();
 
-	public void deal(int numCards, BlackjackPlayer... players);
+	public void shuffle() { ... }
 
-	public int getRemainingCardCount();
+	public T getTopCard() { ... }
+
+	public void deal(int numCards, Collection<T>... targetHands) {
+    ...
+  }
+
+	public int getRemainingCardCount() {
+    ...
+  }
+}
+
+interface UnoCard {
+  ...
+}
+
+class UnoDeck extends Deck<UnoCard> {
+  @Override UnoCard[] getValidCards() {
+    return new UnoCard[0];
+  }
 }

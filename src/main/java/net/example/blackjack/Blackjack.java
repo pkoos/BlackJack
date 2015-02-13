@@ -19,20 +19,19 @@ public class Blackjack extends CardGame {
             cards.deal(2, human, dealer);
             human.checkCards();
             System.out.println(human);
-            playerLoop();
-            dealerLoop();
+          for(Player p : players)
+            takeTurn(p);
         } catch (PlayerBustsException e) {
 
         }
         System.out.println(calculateWinner(human, dealer));
     }
 
-    private void playerLoop() throws PlayerBustsException {
-        while ((this.getGameKeepGoing())) {
-            if (over21(human)) {
-                throw new PlayerBustsException(human, "busts!");
-            }
-            human.hitOrStand(cards, this);
+    private void takeTurn(Player p) throws PlayerBustsException {
+        while (p.getScore() < 21) {
+          PlayerAction a = p.hitOrStand(cards, this);
+          if(a == Stand) return;
+          p.addCard(deck.getTopCard());
         }
     }
 

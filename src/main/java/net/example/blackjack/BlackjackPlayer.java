@@ -18,7 +18,7 @@ public class BlackjackPlayer implements Player {
 		handOfCards.addCard(c);
 	}
 
-	public void hitOrStand(BlackjackDeck deck, Blackjack blackjack) {
+	public PlayerAction hitOrStand(BlackjackDeck deck, Blackjack blackjack) {
 		System.out.println("Would you like to HIT or STAND? >>>");
 		playerInput = input.nextLine().toUpperCase();
 
