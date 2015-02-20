@@ -8,8 +8,6 @@ public class BlackjackPlayer implements Player {
 	private Scanner input = new Scanner(System.in);
 	private String playerInput;
 
-	// private boolean keepGoing = true;
-
 	public BlackjackPlayer(String name) {
 		this.name = name;
 	}
@@ -55,13 +53,6 @@ public class BlackjackPlayer implements Player {
 	public String toString() {
 		return "Total Score: " + checkScore() + ".";
 	}
-
-	/*
-	 * public boolean getKeepGoing() { return keepGoing; }
-	 * 
-	 * public void setKeepGoing(boolean keepGoing) { this.keepGoing = keepGoing;
-	 * }
-	 */
 
 	public void checkCards() {
 		handOfCards.checkHand();

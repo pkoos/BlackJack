@@ -7,8 +7,6 @@ public class BlackjackDeck implements Deck {
 	private int cardCount = 0;
 	private Random random;
 
-	// The deck needs to get some information from
-	// the game rules, which isn't receiving currently
 	public BlackjackDeck(Random randNum) {
 		this.random = randNum;
 		int counter = 0;

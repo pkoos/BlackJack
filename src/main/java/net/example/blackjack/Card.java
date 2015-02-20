@@ -6,6 +6,7 @@ public class Card {
 	private int cardVal;
 	private String color;
 	private boolean visible;
+    private char cardSymbol;
 
 	public Card(Rank r, Suit s, int cardVal) {
 		rank = r;
@@ -13,6 +14,7 @@ public class Card {
 		color = setColor(s);
 
 		this.cardVal = cardVal;
+        setCardSymbol();
 	}
 
 	public int getCardValue() {
@@ -47,8 +49,8 @@ public class Card {
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
 
-		return sb.append(getCardRank()).append(" of ").append(getCardSuit())
-				.append("s (").append(getCardColor()).append(").").toString();
+		return sb.append(getCardRank())/*.append(" of ")*/.append(" " + getCardSymbol() + " ")
+				.append("(" + getCardColor()).append(").").toString();
 
 	}
 
@@ -60,4 +62,25 @@ public class Card {
 		this.visible = visible;
 	}
 
+    private void setCardSymbol() {
+        switch(suit) {
+            case Spade:
+                cardSymbol = '\u2660';
+                break;
+            case Club:
+                cardSymbol = '\u2663';
+                break;
+            case Diamond:
+                cardSymbol = '\u2666';
+                break;
+            case Heart:
+                cardSymbol = '\u2764';
+                break;
+
+        }
+    }
+
+    public char getCardSymbol() {
+        return cardSymbol;
+    }
 }

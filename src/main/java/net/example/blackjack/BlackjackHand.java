@@ -9,7 +9,6 @@ public class BlackjackHand implements Hand {
 		blackjackHand = new ArrayList<Card>();
 	}
 
-	// Works only with Blackjack, needs to be adjusted
 	public void addCard(Card c) {
 		blackjackHand.add(c);
 		getScore();
@@ -26,11 +25,6 @@ public class BlackjackHand implements Hand {
 		return blackjackHand.size();
 	}
 
-	// And boom goes the dynamite!
-	// This was originally calculateHandScore(),
-	// and only works for Blackjack. This method
-	// needs to be refactored to work with more
-	// than one game. 2/6/15 3:26pm
 	public int getScore() {
 		int handScore = 0;
 		boolean hasAce = false;
