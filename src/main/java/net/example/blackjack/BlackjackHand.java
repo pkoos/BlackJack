@@ -2,7 +2,7 @@ package net.example.blackjack;
 
 import java.util.ArrayList;
 
-public class BlackjackHand implements Hand {
+public class BlackjackHand  {
 	private ArrayList<Card> blackjackHand;
 
 	public BlackjackHand() {

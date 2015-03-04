@@ -5,6 +5,6 @@ public class Game {
 		System.out.println("Game started...");
 		Blackjack game = new Blackjack();
 		game.play();
-	}
+    }
 
 }

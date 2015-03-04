@@ -1,5 +1,12 @@
 package net.example.blackjack;
 
-public interface Player {
-	
+
+public abstract class Player {
+    final String name;
+    BlackjackHand cards = new BlackjackHand();
+    public Player(String name) {
+        this.name = name;
+    }
+
+
 }

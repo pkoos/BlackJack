@@ -2,7 +2,7 @@ package net.example.blackjack;
 
 import java.util.Random;
 
-public class BlackjackDeck implements Deck {
+public class BlackjackDeck {
 	final Card cards[];
 	private int cardCount = 0;
 	private Random random;

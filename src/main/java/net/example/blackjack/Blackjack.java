@@ -1,8 +1,9 @@
 package net.example.blackjack;
 
 import java.util.Random;
+import java.util.Scanner;
 
-public class Blackjack extends CardGame {
+public class Blackjack {
     final BlackjackDeck cards;
     final BlackjackPlayer human, dealer;
     private boolean gameKeepGoing = true;
@@ -14,47 +15,36 @@ public class Blackjack extends CardGame {
     }
 
     public void play() {
-        try {
             cards.shuffle();
             cards.deal(2, human, dealer);
             human.checkCards();
             System.out.println(human);
             playerLoop();
             dealerLoop();
-        } catch (PlayerBustsException e) {
-
-        }
         System.out.println(calculateWinner(human, dealer));
     }
 
-    private void playerLoop() throws PlayerBustsException {
-        while ((this.getGameKeepGoing())) {
-            if (over21(human)) {
-                throw new PlayerBustsException(human, "busts!");
+    public void turn(BlackjackDeck deck, BlackjackPlayer... playerList) {
+        for(BlackjackPlayer person : playerList) {
+            while(over21(person)) {
+
             }
-            human.hitOrStand(cards, this);
         }
     }
+
+    private void playerLoop() {
+
+    }
+
 
     private boolean over21(BlackjackPlayer player) {
         return player.checkScore() > 21;
     }
 
-    private void dealerLoop() throws PlayerBustsException {
-        dealer.checkCards();
-        setGameKeepGoing(true);
-        while (getGameKeepGoing()) {
-            if (over21(dealer)) {
-                throw new PlayerBustsException(dealer, "busts!");
-            }
-            if (dealer.checkScore() > 16) {
-                dealer.stand(this);
-            } else {
-                dealer.hit(cards.getTopCard());
-            }
-        }
+    private void dealerLoop() {
 
     }
+
 
     private String calculateWinner(BlackjackPlayer p1, BlackjackPlayer p2) {
 
@@ -84,6 +74,20 @@ public class Blackjack extends CardGame {
 
     private int setCardVal(Card c) {
         return Math.min(10, c.rank.ordinal() + 1);
+    }
+
+    public void hitOrStand(BlackjackDeck deck, BlackjackPlayer player) {
+        Scanner s = new Scanner(System.in);
+        String input = s.nextLine().toUpperCase();
+        System.out.println("Would you like to HIT or STAND? >>>");
+
+        switch (input) {
+
+            case "HIT":
+                System.out.println("Dealing a card.");
+                player.hit(deck.getTopCard());
+                break;
+        }
     }
 
 }
