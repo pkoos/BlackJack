@@ -2,8 +2,9 @@ package net.example.blackjack;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.ArrayList;
 
-public class Blackjack {
+public class Blackjack extends Rules {
     final BlackjackDeck cards;
     final BlackjackPlayer human, dealer;
     private boolean gameKeepGoing = true;
@@ -15,18 +16,18 @@ public class Blackjack {
     }
 
     public void play() {
-            cards.shuffle();
-            cards.deal(2, human, dealer);
-            human.checkCards();
-            System.out.println(human);
-            playerLoop();
-            dealerLoop();
+        cards.shuffle();
+        cards.deal(2, human, dealer);
+        human.checkCards();
+        System.out.println(human);
+        playerLoop();
+        dealerLoop();
         System.out.println(calculateWinner(human, dealer));
     }
 
     public void turn(BlackjackDeck deck, BlackjackPlayer... playerList) {
-        for(BlackjackPlayer person : playerList) {
-            while(over21(person)) {
+        for (BlackjackPlayer person : playerList) {
+            while (over21(person)) {
 
             }
         }
@@ -76,18 +77,29 @@ public class Blackjack {
         return Math.min(10, c.rank.ordinal() + 1);
     }
 
-    public void hitOrStand(BlackjackDeck deck, BlackjackPlayer player) {
+
+    // WORK IN PROGRESS
+    public void turn(ArrayList<BlackjackPlayer> players) {
+        ArrayList<Integer> playerScores = new ArrayList();
         Scanner s = new Scanner(System.in);
-        String input = s.nextLine().toUpperCase();
-        System.out.println("Would you like to HIT or STAND? >>>");
-
-        switch (input) {
-
-            case "HIT":
-                System.out.println("Dealing a card.");
-                player.hit(deck.getTopCard());
-                break;
+        String input;
+        for (BlackjackPlayer person : players) {
+            boolean thisTurn = true;
+            do {
+                System.out.println("Would you like to another card? Y/N >>>");
+                input = s.nextLine().toUpperCase();
+                if (input.equals("Y")) {
+                    if (person.hit(input)) {
+                        person.getCard(cards.getTopCard());
+                    }
+                }
+            } while (person.hit(input) && person.checkScore() <= 21);
+            playerScores.add(person.checkScore());
         }
+
+        // Ask first player if they want to hit -
+        // If yes - give them a card and ask again -
+        // keep going until score >21 or they say no
     }
 
 }

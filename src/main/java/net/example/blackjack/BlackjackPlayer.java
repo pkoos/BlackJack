@@ -1,19 +1,15 @@
 package net.example.blackjack;
 
-public class BlackjackPlayer extends Player {
+public class BlackjackPlayer extends Player implements PlayerAction {
 	private BlackjackHand handOfCards = new BlackjackHand();
+    final String name;
 
 	public BlackjackPlayer(String name) {
-		super(name);
+		this.name = name;
 	}
 
-	public void requestCard(Card c) {
+	public void getCard(Card c) {
 		handOfCards.addCard(c);
-	}
-
-
-	public void stand(Blackjack blackJack) {
-		blackJack.setGameKeepGoing(false);
 	}
 
 	public void hit(Card c) {
@@ -38,4 +34,8 @@ public class BlackjackPlayer extends Player {
 		return this.name;
 	}
 
+    @Override
+    public boolean hit(String input) {
+        return input.equals("Y");
+    }
 }

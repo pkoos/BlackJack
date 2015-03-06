@@ -2,7 +2,7 @@ package net.example.blackjack;
 
 import java.util.Random;
 
-public class BlackjackDeck {
+public class BlackjackDeck extends Deck {
 	final Card cards[];
 	private int cardCount = 0;
 	private Random random;
@@ -48,7 +48,7 @@ public class BlackjackDeck {
 	public void deal(int numCards, BlackjackPlayer... players) {
 		for (int i = 0; i < numCards; i++) {
 			for (BlackjackPlayer person: players) {
-				person.requestCard(getTopCard());
+				person.getCard(getTopCard());
 			}
 		}
 	}
